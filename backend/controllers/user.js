@@ -37,7 +37,7 @@ exports.register = async(req,res)=>{
 exports.login = async (req,res) =>{
     try {
         const {email ,password} = req.body;
-        const user = await User.findOne({email});
+        const user = await User.findOne({email}).select("+password");
 
         if(!user){
             return res.status(400).json({
@@ -55,11 +55,16 @@ exports.login = async (req,res) =>{
         }
         const token = await user.generateToken();
 
+        const option = {
+            expires : new Date(Data.now()+ 90 * 24 * 60 * 60 * 1000),
+            httpOnly: true
+        }
 
-        res.status(200).cookie("token", token).json({
+        res.status(200).cookie("token", token,option).json({
             success : true,
             user,
-        })
+            token
+        });
     } catch (error) {
         res.status(500).json({
             success : false,
