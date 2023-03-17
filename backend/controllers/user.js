@@ -18,7 +18,7 @@ exports.register = async(req,res)=>{
             name,
             email,
             password,
-            avatar: {public_id : sample, url : "sampleurl"}
+            avatar: {public_id : "sample_id", url : "sampleurl"}
         })
 
         res.status(201)
