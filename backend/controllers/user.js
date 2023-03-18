@@ -1,5 +1,5 @@
 const User = require ("../models/User");
-
+const cookit = require("cookie")
 exports.register = async(req,res)=>{
     try {
         
@@ -46,21 +46,22 @@ exports.login = async (req,res) =>{
             })
         }
         const isMatch = await user.matchPassword(password);
-
+        
         if(!isMatch){
             return res.status(400).json({
                 success : false,
                 message : "Incorrect password"
             })
         }
-        const token = await user.generateToken();
-
-        const option = {
-            expires : new Date(Data.now()+ 90 * 24 * 60 * 60 * 1000),
+        const options = {
+            expires : new Date(Date.now()+ 90 * 24 * 60 * 60 * 1000),
             httpOnly: true
         }
-
-        res.status(200).cookie("token", token, option).json({
+        const token = await user.generateToken();
+        
+        res.status(200)
+        .cookie("token", token, options)
+        .json({
             success : true,
             user,
             token,
