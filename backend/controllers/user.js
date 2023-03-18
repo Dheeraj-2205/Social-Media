@@ -1,5 +1,4 @@
 const User = require ("../models/User");
-const cookit = require("cookie")
 exports.register = async(req,res)=>{
     try {
         
@@ -21,11 +20,21 @@ exports.register = async(req,res)=>{
             avatar: {public_id : "sample_id", url : "sampleurl"}
         })
 
+        const token = await user.generateToken();
+        
+        const options = {
+            expires : new Date(Date.now()+ 90 * 24 * 60 * 60 * 1000),
+            httpOnly: true
+        }
+
+        
         res.status(201)
+        .cookie("token", token, options)
         .json({
             success : true,
-            user
-        })
+            user,
+            token,
+        });
     } catch (error) {
         res.status(500).json({
             success : false,
@@ -53,12 +62,15 @@ exports.login = async (req,res) =>{
                 message : "Incorrect password"
             })
         }
+        
+        const token = await user.generateToken();
+        
         const options = {
             expires : new Date(Date.now()+ 90 * 24 * 60 * 60 * 1000),
             httpOnly: true
         }
-        const token = await user.generateToken();
-        
+
+
         res.status(200)
         .cookie("token", token, options)
         .json({
