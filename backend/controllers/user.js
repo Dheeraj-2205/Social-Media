@@ -60,10 +60,10 @@ exports.login = async (req,res) =>{
             httpOnly: true
         }
 
-        res.status(200).cookie("token", token,option).json({
+        res.status(200).cookie("token", token, option).json({
             success : true,
             user,
-            token
+            token,
         });
     } catch (error) {
         res.status(500).json({
