@@ -115,7 +115,7 @@ exports.likeAndUnlikePost = async(req,res)=>{
 
 exports.followUser = async(req,res)=>{
     try {
-        const userToFollow = await User.findById(req.params.id);
+        const userToFollow = await User.findById(req.params._id);
         const loggedInUser = await User.findById(req.user._id);
 
         if(!userToFollow){
