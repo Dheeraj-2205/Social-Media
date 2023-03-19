@@ -40,19 +40,19 @@ exports.deletePost = async(req,res)=>{
                 message : "Post is not found"
             })
         }
-
         if(post.owner.toString() !== req.user._id.toString()){
             return res.status(401).json({
                 success : false,
                 message : "Unauthorized"
             })
         }
-
+        
         await post.remove();
+
 
         const user = await User.findById(req.user._id);
         const index = user.posts.indexOf(req.params.id);
-        
+
         user.posts.splice(index,1);
         await user.save();
 
@@ -61,7 +61,8 @@ exports.deletePost = async(req,res)=>{
             message : "Post deleted"
         })
 
-    } catch (error) {
+    } 
+    catch (error) {
         res
         .status(500)
         .json({
