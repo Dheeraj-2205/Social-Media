@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
+
 const cookieParser = require("cookie-parser");
-console.log(process.env.NODE_ENV);
 if(process.env.NODE_ENV !== "production"){
     require("dotenv").config({path : "backend/config/config.env"});
 }
@@ -14,8 +14,8 @@ app.use(cookieParser())
 // importing  routes
 const post = require("./routes/post")
 const user = require("./routes/user");
-const { isAuthenticated } = require("./middlewares/auth");
-const { likeAndUnlikePost } = require("./controllers/post");
+// const { isAuthenticated } = require("./middlewares/auth");
+// const { likeAndUnlikePost } = require("./controllers/post");
 
 
 // using Routes
