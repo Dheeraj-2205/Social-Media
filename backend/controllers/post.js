@@ -47,7 +47,7 @@ exports.deletePost = async(req,res)=>{
             })
         }
         
-        await post.remove();
+        await post.deleteOne();
 
 
         const user = await User.findById(req.user._id);
@@ -112,3 +112,4 @@ exports.likeAndUnlikePost = async(req,res)=>{
         })
     }
 }
+
