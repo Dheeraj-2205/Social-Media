@@ -190,6 +190,13 @@ exports.updatePassword = async (req,res)=>{
             })
         }
 
+        user.password = newPassword;
+        await user.save();
+        res.status(200).json({
+            success : true,
+            messae : "password upadated"
+        })
+
     } catch (error) {
         res.status(500).json({
             success : false,
