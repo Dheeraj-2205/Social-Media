@@ -87,6 +87,20 @@ exports.login = async (req,res) =>{
     }
 }
 
+exports.logout = async(req,res)=>{
+    try {
+        res.status(200).cookie("token", null, {expires: new Date(Date.now()), httpOnly :true})
+        .json({
+            success : true,
+            message : "Logged out"
+        })
+    } catch (error) {
+        res.status(500).json({
+            success : false,
+            message : error.message
+        })
+    }
+}
 
 exports.followUser = async(req,res)=>{
     try {
@@ -157,6 +171,29 @@ exports.getPostOfFollowing = async(req,res)=>{
         res.status(500).json({
             success : "false",
             message : error.message
+        })
+    }
+}
+
+exports.updatePassword = async (req,res)=>{
+    try {
+        const user= await User.findById(req.user._id);
+
+        const {oldPassword , newPassword} = req.body;
+
+        const isMatch = await user.matchPassword(oldPassword);
+
+        if(!isMatch){
+            return res.status(400).json({
+                success : false,
+                message: "Incorrect Old Password"
+            })
+        }
+
+    } catch (error) {
+        res.status(500).json({
+            success : false,
+            messae : error.message
         })
     }
 }
