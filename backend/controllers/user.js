@@ -89,9 +89,8 @@ exports.login = async (req,res) =>{
 
 exports.followUser = async(req,res)=>{
     try {
-        const userToFollow = await User.findById(req.params._id);
+        const userToFollow = await User.findById(req.params.id);
         const loggedInUser = await User.findById(req.user._id);
-
         if(!userToFollow){
             return res.status(404).json({
                 success : false,
