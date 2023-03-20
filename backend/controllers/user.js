@@ -102,7 +102,7 @@ exports.followUser = async(req,res)=>{
             const indexfollowing = loggedInUser.following.indexOf(userToFollow._id);
             const indexfollowers = userToFollow.following.indexOf(loggedInUser._id);
 
-            indexfollowing.following.splice(indexfollowing,1);
+            loggedInUser.following.splice(indexfollowing,1);
             userToFollow.follower.splice(indexfollowers,1);
             
             await loggedInUser.save();
@@ -126,6 +126,25 @@ exports.followUser = async(req,res)=>{
             })
         }
 
+    } catch (error) {
+        res.status(500).json({
+            success : "false",
+            message : error.message
+        })
+    }
+}
+
+exports.getPostOfFollowing = async(req,res)=>{
+    try {
+
+        const user = await User.findById(req.user._id);
+        
+        res.status({
+            success : true,
+            user,
+        })
+
+        
     } catch (error) {
         res.status(500).json({
             success : "false",
