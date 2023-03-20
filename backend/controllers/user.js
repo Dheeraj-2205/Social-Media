@@ -98,6 +98,12 @@ exports.followUser = async(req,res)=>{
             });
         }
 
+        if(loggedInUser.following.includes(userToFollow._id)){
+            const indexfollowing = loggedInUser.following.indexOf(userToFollow._id);
+            indexfollowing.following.splice(indexfollowing,1);
+            loggedInUser.following.splice(index,1);
+        }
+
         loggedInUser.following.push(userToFollow._id);
         userToFollow.follower.push(loggedInUser._id);
 
