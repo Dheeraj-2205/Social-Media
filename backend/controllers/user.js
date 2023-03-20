@@ -100,7 +100,7 @@ exports.followUser = async(req,res)=>{
         }
 
         loggedInUser.following.push(userToFollow._id);
-        userToFollow.followers.push(loggedInUser._id);
+        userToFollow.follower.push(loggedInUser._id);
 
         await loggedInUser.save();
         await userToFollow.save();
