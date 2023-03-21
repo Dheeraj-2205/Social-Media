@@ -118,7 +118,7 @@ exports.updateCaption = async (req,res)=>{
         const post = await Post.findById(req.params.id);
 
         if(!post){
-            return res.stauts(400).json({
+            return res.status(404).json({
                 success : false,
                 message : "Post not found"
             })
