@@ -180,6 +180,12 @@ exports.updatePassword = async (req,res)=>{
         const user= await User.findById(req.user._id);
 
         const {oldPassword , newPassword} = req.body;
+        if(!oldPassword || !newPassword){
+            return res.status(400).json({
+                success : false,
+                message : "Please provide oldPassword and newPassword"
+            })
+        }
 
         const isMatch = await user.matchPassword(oldPassword);
 
