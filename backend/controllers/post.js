@@ -15,7 +15,7 @@ exports.createPost = async (req,res) =>{
 
         const user = await User.findById(req.user._id);
 
-        user.posts.push(Post._id);
+        user.posts.push(post._id);
 
         await user.save();
         res.status(201).json({
@@ -27,6 +27,7 @@ exports.createPost = async (req,res) =>{
             success  : false,
             message : error.message,
         })
+        console.log(error);
     }
 }
 
@@ -113,10 +114,10 @@ exports.likeAndUnlikePost = async(req,res)=>{
     }
 }
 
-exports.updateCaption = async (req,res)=>{
+exports.updateCaption = async (req,res) => {
     try {
         const post = await Post.findById(req.params.id);
-
+        console.log(post);
         if(!post){
             return res.status(404).json({
                 success : false,
