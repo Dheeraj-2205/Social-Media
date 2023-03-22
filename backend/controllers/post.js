@@ -145,25 +145,3 @@ exports.updateCaption = async (req,res) => {
     }
 }
 
-exports.deleteMyProfile = async(req,res) =>{
-    try {
-        const user = await User.findById(req.user._id);
-        const posts = user.posts;
-        await user.deleteOne();
-
-        for(let i = 0; i < posts.length; i++){
-            const post = await Post.findById(posts[i]); 
-            await post.deleteOne()
-        }
-
-        res.status(200).json({
-            sucess : true,
-            message : "Profile deleted"
-        })
-    } catch (error) {
-        res.status(500).json({
-            sucess : false,
-            message : error.message,
-        })
-    }
-}
