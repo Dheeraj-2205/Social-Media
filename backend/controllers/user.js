@@ -257,8 +257,8 @@ exports.deleteMyProfile = async (req, res) => {
     // removing user form following's followers
     for(let i = 0; i < following.length; i++){
         const follows = await User.findById(following[i]);
-        const index = follows.following.indexOf(userId);
-        follows.following.splice(index,1);
+        const index = follows.follower.indexOf(userId);
+        follows.follower.splice(index,1);
         await follows.save();
     }
 
