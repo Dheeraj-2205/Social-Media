@@ -321,7 +321,7 @@ exports.getAllUser = async (req,res)=>{
             user,
         })
 
-        }
+        
     } catch (error) {
         res.status(500).json({
             success : true,
