@@ -242,9 +242,9 @@ exports.deleteMyProfile = async (req, res) => {
       await post.deleteOne();
     }
 
-    res.status(200).json({
+    res.status(401).json({
       sucess: true,
-      message: "Profile deleted",
+      message: "please login",
     });
   } catch (error) {
     res.status(500).json({
@@ -253,3 +253,5 @@ exports.deleteMyProfile = async (req, res) => {
     });
   }
 };
+
+
