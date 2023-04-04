@@ -155,15 +155,20 @@ exports.addComment = async (req,res) =>{
                 message : "Post not found" 
             })
         }
-        let commentExists = false;
+        let commentIndex = -1;
 
-        post.comment.forEach((item)=>{
+        post.comments.forEach((item, index)=>{
             if(item.user.toString() === req.user._id.toString()){
-                commentExists = true;
+                commentIndex = index;
             }
         });
-        if(1){
-            console.log(object);
+        if(commentIndex !== -1){
+            post.comments[commentIndex].comment = req.body.comment;
+            await post.save();
+
+            return res.status(200).json({
+
+            })
 
         }else{
             post.comment.push({
@@ -171,7 +176,11 @@ exports.addComment = async (req,res) =>{
                 comment : req.body.comment
             });
 
-            // await 
+            await post.save();
+            return res.status(200).json({
+                success : true,
+                message : "Comment added"
+            })
         }
     } catch (error) {
         return res.status(500).json({
