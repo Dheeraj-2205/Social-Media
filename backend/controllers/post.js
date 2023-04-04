@@ -155,10 +155,23 @@ exports.addComment = async (req,res) =>{
                 message : "Post not found" 
             })
         }
-        if(){
+        let commentExists = false;
+
+        post.comment.forEach((item)=>{
+            if(item.user.toString() === req.user._id.toString()){
+                commentExists = true;
+            }
+        });
+        if(1){
+            console.log(object);
 
         }else{
+            post.comment.push({
+                user : req.user._id,
+                comment : req.body.comment
+            });
 
+            // await 
         }
     } catch (error) {
         return res.status(500).json({
