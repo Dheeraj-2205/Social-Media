@@ -145,3 +145,27 @@ exports.updateCaption = async (req,res) => {
     }
 }
 
+exports.addComment = async (req,res) =>{
+    try {
+        const post = await Post.findById(req.params.id);
+
+        if(!post){
+            return res.status(404).json({
+                success : false,
+                message : "Post not found" 
+            })
+        }
+        // if(){
+
+        // }else{
+
+        // }
+    } catch (error) {
+        return res.status(500).json({
+            success : false,
+            message : error.message
+        })
+    }
+
+    
+}
