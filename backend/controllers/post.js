@@ -155,11 +155,11 @@ exports.addComment = async (req,res) =>{
                 message : "Post not found" 
             })
         }
-        // if(){
+        if(){
 
-        // }else{
+        }else{
 
-        // }
+        }
     } catch (error) {
         return res.status(500).json({
             success : false,
