@@ -195,7 +195,6 @@ exports.addComment = async (req,res) =>{
 exports.deleteComment = async (req,res) =>{
     try {
         const post  = await Post.findById(req.params.id);
-        console.log(post);
 
         if(!post){
             return res.status(404).json({
