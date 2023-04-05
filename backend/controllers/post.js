@@ -189,6 +189,26 @@ exports.addComment = async (req,res) =>{
             message : error.message
         })
     }
+  
+}
 
-    
+exports.deleteComment = async (req,res) =>{
+    try {
+        const post  = await Post.findById(req.params.id);
+        console.log(post);
+
+        if(!post){
+            return res.status(404).json({
+                success : false,
+                message : "post not found"
+            })
+        }else{
+
+        }
+    } catch (error) {
+        return res.status(500).json({
+            success : false,
+            message : error.message
+        })
+    }
 }
