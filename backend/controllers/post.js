@@ -202,8 +202,22 @@ exports.deleteComment = async (req,res) =>{
                 success : false,
                 message : "post not found"
             })
-        }else{
+        }
 
+        if(post.owner.toString() === req.user._id.toString()){
+
+        }else{
+            post.comments.forEach((item, index)=>{
+                if(item.user.toString() === req.user._id.toString()){
+                   return post.comments.splice(index,1);
+                }
+            });
+
+            await post.save();
+            res.status(200).json({
+                success : true,
+                message : "Your comment has been deleted"
+            })
         }
     } catch (error) {
         return res.status(500).json({
