@@ -167,11 +167,12 @@ exports.addComment = async (req,res) =>{
             await post.save();
 
             return res.status(200).json({
-
+                message : "Comment Updated",
+                success : "true"
             })
 
         }else{
-            post.comment.push({
+            post.comments.push({
                 user : req.user._id,
                 comment : req.body.comment
             });
