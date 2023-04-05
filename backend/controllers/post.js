@@ -204,7 +204,26 @@ exports.deleteComment = async (req,res) =>{
             })
         }
 
+        // checking if owner wants to deleted
         if(post.owner.toString() === req.user._id.toString()){
+
+            if(req.body.commentId === undefined){
+                return res.status(400).json({
+                    success : false,
+                    message : "Comment id  is required"
+                })
+            }
+            post.comments.forEach((item, index)=>{
+                if(item._id.toString() === req.body.commentId.toString()){
+                   return post.comments.splice(index,1);
+                }
+            });
+            await post.save();
+            return res.status(200).json({
+                success : true,
+                message : "Selected comment has deleted"
+            })
+
 
         }else{
             post.comments.forEach((item, index)=>{
