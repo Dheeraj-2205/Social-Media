@@ -56,4 +56,8 @@ userSchema.methods.generateToken = function (){
     return jwt.sign({_id : this._id},process.env.JWT_SECRET)
 }
 
+userSchema.methods.getResetPasswordToken = function(){
+    
+}
+
 module.exports = mongoose.model("User",userSchema);
