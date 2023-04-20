@@ -340,6 +340,8 @@ exports.forgotPassword = async (req,res) =>{
         message : "There is something wrong user not found"
       })
     }
+    const resetPasswordToken = user.getResetPasswordToken();
+    await user.save();
   } catch (error) {
      return res.status(500).json({
       success : false,
