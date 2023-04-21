@@ -342,6 +342,8 @@ exports.forgotPassword = async (req,res) =>{
     }
     const resetPasswordToken = user.getResetPasswordToken();
     await user.save();
+    const resetUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetPasswordToken}`
+    const message = `Reset your password by clicking on this link below : \n\n ${resetUrl}`;
   } catch (error) {
      return res.status(500).json({
       success : false,
