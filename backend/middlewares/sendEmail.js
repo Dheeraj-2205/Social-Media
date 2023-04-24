@@ -4,6 +4,10 @@ exports.sendEmail = async(options) =>{
     const transporter = nodeMailer.createTransport({});
 
     const mailOptions = {
-        from : "Nodemailer Contact"
+        from : "",
+        to : options.email,
+        subject : options.subject,
+        text: options.message
     }
+    await transporter.sendMail(mailOptions)
 }
