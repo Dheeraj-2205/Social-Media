@@ -344,6 +344,25 @@ exports.forgotPassword = async (req,res) =>{
     await user.save();
     const resetUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetPasswordToken}`
     const message = `Reset your password by clicking on this link below : \n\n ${resetUrl}`;
+
+    try {
+      await sendEmail({
+        email : user.email,
+        subject : "Reset Password",
+        message, 
+      })
+      res.status(200).json({
+        success : true,
+        message : `Email sent to ${user.email}`
+      })
+    } catch (error) {
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
+      res.status(500).json({
+        success : false,
+        
+      })
+    }
   } catch (error) {
      return res.status(500).json({
       success : false,
