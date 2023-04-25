@@ -376,7 +376,7 @@ exports.forgotPassword = async (req,res) =>{
 exports.resetPassword =async (req,res)=>{
   try {
 
-    
+    const resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest()
   } catch (error) {
     res.status(500).json({
       success : false,
