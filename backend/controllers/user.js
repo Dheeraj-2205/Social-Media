@@ -1,6 +1,7 @@
 const Post = require("../models/Post");
 const User = require("../models/User");
 const {sendEmail} = require("../middlewares/sendEmail") 
+const crypto = require("crypto");
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -374,6 +375,7 @@ exports.forgotPassword = async (req,res) =>{
  
 exports.resetPassword =async (req,res)=>{
   try {
+
     
   } catch (error) {
     res.status(500).json({
