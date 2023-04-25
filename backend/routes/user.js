@@ -12,5 +12,6 @@ router.route("/update/profile").put(isAuthenticated,updateProfile)
 router.route("/delete/me").delete(isAuthenticated,deleteMyProfile)
 router.route("/me").get(isAuthenticated,myProfile)
 router.route("/user/:id").get(isAuthenticated,getUserProfile);
-router.route("/users").get(isAuthenticated,getAllUser)
+router.route("/users").get(isAuthenticated,getAllUser);
+router.route("/forgot/password").post(isAuthenticated,forgotPassword)
 module.exports = router;
