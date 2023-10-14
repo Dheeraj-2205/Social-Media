@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let amazon=[{rating:4},{rating:5}]
+    const rate = [];
+amazon.forEach((ele,i ,arr) =>{
+      const { rating } = ele;
+          rate.push(rating)
+})
+let max = 0;
+for(let i = 0; i < rate.length; i++){
+     if(max < rate[i]){
+          max = rate[i];
+     }
+}
+console.log(max);
+</script>
