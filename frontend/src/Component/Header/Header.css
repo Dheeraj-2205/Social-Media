@@ -29,10 +29,6 @@
   .header > a > svg {
     font-size: 2vmax;
     transition: all 0.5s;
-    color: rgba(0, 0, 0, 512);
-  }
-  .header > a > svg:hover {
-    color: black;
-    transform: scale(1.2);
+    color: rgba(0, 0, 0, 312);
   }
 }

@@ -1,0 +1,58 @@
+.login {
+    height: 100vh;
+    background-image: linear-gradient(to right , #ff14bc , #ceffbc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vmax;
+    box-sizing: border-box;
+}
+
+.login > form{
+    background-color: rgb(236, 228, 228);
+    height: 100%;
+    width: 50%;
+    border-radius: 30px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 2vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.loginForm > a{
+    align-self: flex-end;
+    box-sizing: border-box;
+    padding: 1vmax 2vmax;
+    color: rgba(0, 0, 0, .212);
+    margin: 2vmax;
+}
+
+.loginForm > input,button{
+    height: 3vmax;
+    width: 20vmax;
+    margin-top: 5%;
+    box-sizing: border-box;
+    padding: 2vw;
+    outline: none;
+
+}
+
+@media screen and (max-width : 600px) {
+    .loginForm{
+        width: 100%;
+    };
+
+    .loginForm > input{
+        padding: 4vw 8vw;
+        margin: 2vmax;
+        font :  100 1.2rem
+    }
+    .loginForm > a{
+        align-self: center;
+    }
+}
