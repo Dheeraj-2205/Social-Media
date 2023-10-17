@@ -1,31 +1,36 @@
-.post{
-    width: 60%;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0,0,10px rgba(0, 0, 0, .2);
-    padding: 0 1vmax 2vmax;
-    margin: 2vmax;
+.post {
+  width: 60%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0, 0, 10px rgba(0, 0, 0, 0.2);
+  padding: 0 1vmax 2vmax;
+  margin: 2vmax;
 }
-.postHeader{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1vmax;
-
+.postHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vmax;
 }
-.postHeader > button{
-    border-radius: 100%;
-    color: rgba(0, 0, 0, 0.13);
+.postHeader > button {
+  border-radius: 100%;
+  color: rgba(0, 0, 0, 0.13);
 }
-.post > img{
-    width: 100%;
+.post > img {
+  width: 100%;
 }
-.postDetails{
-    display: flex;
-    margin:  1vmax;
+.postDetails {
+  display: flex;
+  margin: 1vmax;
 }
 .postDetails > a {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.13);
-    margin: 1vmax;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.63);
+  margin: 1vmax;
+}
+.like-button {
+  border: none;
+  background-color: #802525;
+  cursor: pointer;
+  margin: 1vmax 2vmax;
 }
