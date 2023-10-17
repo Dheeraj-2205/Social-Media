@@ -13,6 +13,7 @@ const Home = () => {
           }
           ownerName={"Dheeraj"}
           caption={"This is dummy data"}
+          isDelete = {true}
         />
       </div>
       <div className="homeright">

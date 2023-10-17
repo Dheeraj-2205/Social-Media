@@ -28,9 +28,18 @@
   color: rgba(0, 0, 0, 0.63);
   margin: 1vmax;
 }
-.like-button {
-  border: none;
-  background-color: #802525;
-  cursor: pointer;
-  margin: 1vmax 2vmax;
+.postFooter > button{
+    color: rgba(0, 0, 0, 0.321);
+    margin: 0 1vmax;
+    border-radius: 100%;
+    transition: all 0.3s;
 }
+
+.postFooter > button:hover{
+    transform: translateY(-4px);
+}
+.postFooter > button >svg{
+    font-size: 1.7vmax;
+}
+
+ 

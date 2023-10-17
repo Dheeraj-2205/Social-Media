@@ -35,7 +35,7 @@
     margin: 2vmax;
 }
 
-.loginForm > input,button{
+.loginForm > input{
     height: 3vmax;
     width: 20vmax;
     margin-top: 5%;
