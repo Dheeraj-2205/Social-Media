@@ -3,11 +3,10 @@
   display: grid;
   grid-template-columns: 1fr 400px;
   height: 100vh;
-} 
+}
 
- .homeleft {
+.homeleft {
   background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
   overflow-y: auto;
   display: flex;
   flex-direction: column;
