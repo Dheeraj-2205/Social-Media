@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 .login {
     height: 100vh;
     background-image: linear-gradient(to right , #ff14bc , #ceffbc);
@@ -8,7 +11,7 @@
     box-sizing: border-box;
 }
 
-.login > form{
+.login > form,input{
     background-color: rgb(236, 228, 228);
     height: 100%;
     width: 50%;
@@ -28,7 +31,7 @@
     align-self: flex-end;
     box-sizing: border-box;
     padding: 1vmax 2vmax;
-    color: rgba(0, 0, 0, .212);
+    color: rgba(0, 0, 0, .612);
     margin: 2vmax;
 }
 
