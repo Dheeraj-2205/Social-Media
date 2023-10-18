@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Post.css";
-import { Avatar } from "@mui/material";
+import { Avatar, ButtonGroup } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Typography, Button } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -28,7 +29,13 @@ const Post = ({
 
   return (
     <div className="post">
-      <div className="postHeader"></div>
+      <div className="postHeader">
+        {
+            isAccount ?(
+                <Button><MoreVertIcon/></Button>
+            ) : null
+        }
+      </div>
       <img src={postImage} alt="post" />
       <div className="postDetails">
         <Avatar

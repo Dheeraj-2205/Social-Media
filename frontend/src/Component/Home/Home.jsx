@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import User from "../User/User";
 import "./Home.css";
 import Post from "../Post/Post";
+import { useDispatch } from "react-redux";
+import { getFollowingPosts } from "../../Actions/User";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getFollowingPosts());
+  })
   return (
     <div className="home">
       <div className="homeleft">
@@ -14,6 +21,7 @@ const Home = () => {
           ownerName={"Dheeraj"}
           caption={"This is dummy data"}
           isDelete = {true}
+          isAccount = {true}
         />
       </div>
       <div className="homeright">

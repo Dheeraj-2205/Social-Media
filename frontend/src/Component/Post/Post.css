@@ -12,9 +12,10 @@
   justify-content: center;
   padding: 1vmax;
 }
-.postHeader > button {
+.postHeader > Button {
   border-radius: 100%;
-  color: rgba(0, 0, 0, 0.13);
+  color: rgba(0, 0, 0, 0.73);
+  margin-left: auto;
 }
 .post > img {
   width: 100%;
