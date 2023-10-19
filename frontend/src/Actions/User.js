@@ -55,7 +55,8 @@ export const getFollowingPosts = () => async(dispatch) =>{
         dispatch({
             type : "postOfFollowingSuccess",
             payload : data.posts
-        })
+        });
+
     } catch (error) {
         
     }
