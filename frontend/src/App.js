@@ -5,7 +5,7 @@ import Login from './Component/Login/Login';
 import Home from "./Component/Home/Home.jsx"
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from './Actions/User';
+import { getAllUser, loadUser } from './Actions/User';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ function App() {
   
   useEffect(()=>{
     dispatch(loadUser())
+    dispatch(getAllUser())
   },[dispatch])
 
   return (

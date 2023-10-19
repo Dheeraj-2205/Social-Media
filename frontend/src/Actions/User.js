@@ -1,4 +1,5 @@
 import axios from "axios"
+import { allUsersReducer } from "../Reducers/User";
 
 
 export const loginUser = (email, password) => async(dispatch) =>{
@@ -50,7 +51,7 @@ export const getFollowingPosts = () => async(dispatch) =>{
             type :  "postOfFollowingRequest",
         })
 
-        const  { data } = await axios.get("api/v1/posts");
+        const  { data } = await axios.get("/api/v1/posts");
 
         dispatch({
             type : "postOfFollowingSuccess",
@@ -58,6 +59,29 @@ export const getFollowingPosts = () => async(dispatch) =>{
         });
 
     } catch (error) {
-        
+        dispatch({
+            type : "postOfFollowingFailure",
+            payload : error.response.data.error
+        })
+    }
+}
+
+export const getAllUser = () => async(dispatch) =>{
+    try {
+        dispatch({
+            type : "allUsersRequest",
+        });
+
+        const {data} = await axios.get("/api/v1/users")
+        dispatch({
+            type : "allUsersSuccess",
+            payload : data.users,
+        })
+        console.log(data);
+    } catch (error) {
+        dispatch({
+            type : "allUsersFailure",
+            payload : error.response.data.error
+        })
     }
 }

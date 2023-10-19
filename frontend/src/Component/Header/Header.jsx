@@ -13,7 +13,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 
 const Header = () => {
     const [tab,setTab] = useState(window.location.pathname);
-    console.log(tab);
+
   return (
     <div className="header">
       <Link to="/" onClick={() => setTab("/")}>
